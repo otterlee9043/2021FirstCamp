@@ -59,7 +59,7 @@
 <div class="form-group row">
     <label class="col-form-label col-sm-2" for="Comments">Comments</label>
     <div class="col-sm-10">
-      <textarea readonly  class="form-control" name="comment" rows="7" cols="20">"<%=u.getComment()%>"</textarea>
+      <textarea readonly  class="form-control" name="comment" rows="7" cols="20"><%=u.getComment()%></textarea>
     </div>
 </div>
 <div class="form-group row">
