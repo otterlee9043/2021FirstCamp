@@ -42,6 +42,7 @@
         <th>Title</th>
         <th>Author</th>
         <th>Comment</th>
+        <th>Registered Date</th>
         <th class="d-print-none">
           <a class="btn btn-sm btn-success" href="./addform.jsp">Add</a>
         </th>
@@ -49,73 +50,27 @@
     </thead>
     <tbody>
       
-        <tr>
-          <td>Discrete Mathematics</td>
-          <td>Evan S. Connell</td>
-          <td>이산수학 교재이다. 매우 두껍다. 영어로 쓰여져있다.</td>
-          <td class="d-print-none">
-            <a class="btn btn-sm btn-warning" href="/edit/1">Edit</a>
-            <a class="btn btn-sm btn-danger" href="/delete/1">Delete</a>
-            <a class="btn btn-sm" href="/more/1">More</a>
-          </td>
-        </tr>
-      
-        <tr>
-          <td>bear</td>
-          <td>test</td>
-          <td>이미지올리기</td>
-          <td class="d-print-none">
-            <a class="btn btn-sm btn-warning" href="/edit/18">Edit</a>
-            <a class="btn btn-sm btn-danger" href="/delete/18">Delete</a>
-            <a class="btn btn-sm" href="/more/18">More</a>
-          </td>
-        </tr>
-      
-        <tr>
-          <td>fanil</td>
-          <td>fff</td>
-          <td>fff</td>
-          <td class="d-print-none">
-            <a class="btn btn-sm btn-warning" href="/edit/17">Edit</a>
-            <a class="btn btn-sm btn-danger" href="/delete/17">Delete</a>
-            <a class="btn btn-sm" href="/more/17">More</a>
-          </td>
-        </tr>
-      
-        <tr>
-          <td>image test</td>
-          <td>Seung</td>
-          <td>image 테스트 입니당</td>
-          <td class="d-print-none">
-            <a class="btn btn-sm btn-warning" href="/edit/19">Edit</a>
-            <a class="btn btn-sm btn-danger" href="/delete/19">Delete</a>
-            <a class="btn btn-sm" href="/more/19">More</a>
-          </td>
-        </tr>
-      
-        <tr>
-          <td>가르침은 예술이다</td>
-          <td>존 반 다이크</td>
-          <td>123</td>
-          <td class="d-print-none">
-            <a class="btn btn-sm btn-warning" href="/edit/6">Edit</a>
-            <a class="btn btn-sm btn-danger" href="/delete/6">Delete</a>
-            <a class="btn btn-sm" href="/more/6">More</a>
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-  	<%
+    <%
 	List<User> list=UserDao.getAllRecords();
 	request.setAttribute("list",list);
 	%>
-  <table border="1" width="90%">
-<tr><th>Id</th><th>Title</th><th>Author</th><th>Comment</th><th>Registered Date</th></tr>
-<c:forEach items="${list}" var="u">
-	<tr><td>${u.getId()}</td><td>${u.getTitle()}</td><td>${u.getAuthor()}</td><td>${u.getComment()}</td><td>${u.getRegDate()}</td></tr>
-</c:forEach>
-</table>
+      <c:forEach items="${list}" var="u">
+        <tr>
+          <td>${u.getTitle()}</td> 
+          <td>${u.getAuthor()}</td>
+          <td>${u.getComment()}</td>
+          <td>${u.getRegdate()}</td>
+          <td class="d-print-none">
+            <a class="btn btn-sm btn-warning" href="./editform.jsp?id=${u.getId()}">Edit</a>
+            <a class="btn btn-sm btn-danger" href="./deleteuser.jsp?id=${u.getId()}">Delete</a>
+            <a class="btn btn-sm" href="./more.jsp?id=${u.getId()}">More</a>
+          </td>
+        </tr>
+        </c:forEach>
+      
+    </tbody>
+  </table>
+  	
 
 </div>
 

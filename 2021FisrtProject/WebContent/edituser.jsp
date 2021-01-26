@@ -6,11 +6,9 @@
 
 <%
 UserDao uDao = new UserDao();
-int i = uDao.save(u);
 
-if(i>0){
+
+int i=uDao.update(u);
+System.out.println(u.getId());
 response.sendRedirect("list.jsp");
-}else{
-response.sendRedirect("add_error.jsp");
-}
 %>

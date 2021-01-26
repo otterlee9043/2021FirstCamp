@@ -27,12 +27,13 @@ public class User {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	public String getRegDate() {
+	public String getRegdate() {
 		return regdate;
 	}
-	public void setRegDate(String regdate) {
+	public void setRegdate(String regdate) {
 		this.regdate = regdate;
 	}
+	
 }
 
 

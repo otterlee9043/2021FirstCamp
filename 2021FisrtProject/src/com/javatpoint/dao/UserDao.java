@@ -16,18 +16,13 @@ public static Connection getConnection(){
 public static int save(User u){
 	int status=0;
 	try{
-		System.out.println("Befor Connection");
 		Connection con=getConnection();
-		System.out.println("After Connection");
 		PreparedStatement ps=con.prepareStatement("insert into book (title, author, comment, regdate) values(?,?,?,?)");
 		ps.setString(1,u.getTitle());
-		System.out.println(u.getTitle());
 		ps.setString(2,u.getAuthor());
 		ps.setString(3,u.getComment());
-		ps.setString(4,u.getRegDate());
-		System.out.println("Before Status");
+		ps.setString(4,u.getRegdate());
 		status=ps.executeUpdate();
-		System.out.println("After Status");
 		System.out.println(u.getTitle());
 	}catch(Exception e){System.out.println(e);}
 	return status;
@@ -36,11 +31,12 @@ public static int update(User u){
 	int status=0;
 	try{
 		Connection con=getConnection();
-		PreparedStatement ps=con.prepareStatement("update book set title=?,author=?,comment=?,regdate=? where id=?");
+		PreparedStatement ps=con.prepareStatement("update book set title=?,author=?,comment=?,regdate=?where id=?");
 		ps.setString(1,u.getTitle());
+		System.out.println(u.getTitle());
 		ps.setString(2,u.getAuthor());
 		ps.setString(3,u.getComment());
-		ps.setString(4,u.getRegDate());
+		ps.setString(4,u.getRegdate());
 		ps.setInt(5,u.getId());
 		status=ps.executeUpdate();
 	}catch(Exception e){System.out.println(e);}
@@ -70,7 +66,7 @@ public static List<User> getAllRecords(){
 			u.setTitle(rs.getString("title"));
 			u.setAuthor(rs.getString("author"));
 			u.setComment(rs.getString("comment"));
-			u.setRegDate(rs.getString("regdate"));
+			u.setRegdate(rs.getString("regdate"));
 			list.add(u);
 		}
 	}catch(Exception e){System.out.println(e);}
@@ -89,7 +85,7 @@ public static User getRecordById(int id){
 			u.setTitle(rs.getString("title"));
 			u.setAuthor(rs.getString("author"));
 			u.setComment(rs.getString("comment"));
-			u.setRegDate(rs.getString("regdate"));
+			u.setRegdate(rs.getString("regdate"));
 		}
 	}catch(Exception e){System.out.println(e);}
 	return u;
